@@ -7,32 +7,34 @@ public class Cuenta{
 	Cliente cliente;
 	private int limiteOperaciones = 10;
 	private int operacionesRealizadas;
-	private String historial = "";
+	private String historial;
 	
 	public Cuenta() {
 		this.setId(0);
 		this.setBalance(0);
 		this.cliente = new Cliente(); // o null
+		this.setHistorial("");
 	}
 	
 	public Cuenta(int id, float balance, Cliente cliente) {		
 		this.setId(id);
 		this.setBalance(balance);
 		this.cliente = cliente;
+		this.setHistorial("");
 	}
 	
 	public void setId(int id) {this.id = id;}
 	public void setBalance(float balance) {this.balance = balance;}
 	public void setCliente(Cliente cliente) {this.cliente = cliente;}
+	public void setOperacionesRealizadas(int operacionesRealizadas) {this.operacionesRealizadas = operacionesRealizadas;}
+	public void setHistorial(String historial) {this.historial = historial;}
 	
 	public int getId() {return id;}
 	public float getBalance() {return balance;}
 	public Cliente getCliente() {return this.cliente;}	
-	public int getOperacionesRealizadas() {return operacionesRealizadas;}
-	public void setOperacionesRealizadas(int operacionesRealizadas) {this.operacionesRealizadas = operacionesRealizadas;}
+	public int getOperacionesRealizadas() {return operacionesRealizadas;}	
 	public String getHistorial() {return historial;}
-	public void setHistorial(String historial) {this.historial = historial;}
-	
+		
 	public void ImprimirCuenta() {		
 		System.out.println("\nId cuenta: " + this.getId() + 
 							"\nBalance: " + this.getBalance() +
@@ -58,18 +60,24 @@ public class Cuenta{
 		}
 	}
 	
-	public String getMensajeCLiente(int mensajeCliente) {
+	public String getMensajeCLiente(int mensajeCliente, float monto) {
 		String mensaje = "";
 		switch (mensajeCliente) {
 		case 1:		
-			mensaje = " " ;
+			mensaje = "Extraccion exitosa disfrute de sus $ " + monto;
 			break;
 		case 2:		
-			mensaje = " " ;
+			mensaje = "Deposito de $" + monto + " pesos " + "fue realizado con exito";
 			break;
 		case 3:		
-			mensaje = " " ;
-			break;		
+			mensaje = "Prestamo aceptado, el limite de saldo negativo es $2000, su saldo actual es " + 
+					this.getBalance() + "\nDisfrute sus $ " + monto;
+			break;	
+			
+		case 4:		
+			mensaje ="Prestamo rechazado, el limite de saldo negativo es $2000, su saldo actual es " +
+					this.getBalance() + "\nIntente con extraer menos de $ " + monto;
+			break;
 		default:
 			mensaje = "Estimado cliente, algo salio mal. Reintente.";
 			break;
@@ -104,10 +112,11 @@ public class Cuenta{
 				"\nInfo del Cliente \n" + this.cliente.toString();
 	}
 	
-	public void depositar(float deposito){
+	public String depositar(float deposito){
 		this.balance += deposito;
 		// 1 es la operacion de depositar
 		this.registrarMovimiento(getMensajeHistorial(1, deposito));
+		return this.getMensajeCLiente(2, deposito);
 	}
 	
 	public String pedirPrestado(float extraccionDeseada) {		
@@ -119,12 +128,10 @@ public class Cuenta{
 			}			
 			this.setBalance(this.getBalance() - extraccionDeseada);			
 			
-			return "Prestamo aceptado, el limite de saldo negativo es $2000, su saldo actual es " + 
-					this.getBalance() + "\nDisfrute sus $ " + extraccionDeseada;
+			return getMensajeCLiente(3, extraccionDeseada);
 		}
 		else {
-			return "Prestamo rechazado, el limite de saldo negativo es $2000, su saldo actual es " +
-					this.getBalance() + "\nIntente con extraer menos de $ " + extraccionDeseada;
+			return getMensajeCLiente(4, extraccionDeseada);
 		}
 	}
 	
@@ -141,7 +148,7 @@ public class Cuenta{
 			this.balance -= extraccion;
 			// 3 es la operacion de extraccion
 			this.registrarMovimiento(getMensajeHistorial(3, extraccion));
-			return "Extraccion exitosa disfrute de sus $ " + extraccion;
+			return this.getMensajeCLiente(1, extraccion);
 		}
 		else {
 			System.out.println("El saldo es insuficiente para la extraccion de $ " + 
