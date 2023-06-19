@@ -1,6 +1,6 @@
-package Ejercicio_2;
+package Cliente_Cuenta;
 
-public class Cuenta extends Cliente {
+public class Cuenta{
 
 	private int id;
 	private float balance;
@@ -57,6 +57,45 @@ public class Cuenta extends Cliente {
 			System.out.println("\nNo se puede registrar mas movimientos.");
 		}
 	}
+	
+	public String getMensajeCLiente(int mensajeCliente) {
+		String mensaje = "";
+		switch (mensajeCliente) {
+		case 1:		
+			mensaje = " " ;
+			break;
+		case 2:		
+			mensaje = " " ;
+			break;
+		case 3:		
+			mensaje = " " ;
+			break;		
+		default:
+			mensaje = "Estimado cliente, algo salio mal. Reintente.";
+			break;
+		}
+		return mensaje;
+	}
+	
+	public String getMensajeHistorial(int operacion, float monto) {
+		String mensaje = "";
+		switch (operacion) {
+		case 1:		
+			mensaje = "Se realizo un deposito de $ " + monto;
+			break;
+		case 2:		
+			mensaje = "Se realizo un prestamo de $ " + monto;
+			break;
+		case 3:		
+			mensaje = "Se realizo una extraccion de $ " + monto;
+			break;		
+		default:
+			mensaje = "Algo salio mal.";
+			break;
+		}
+		return mensaje;
+	}
+	
 		
 	@Override
 	public String toString() {
@@ -65,16 +104,21 @@ public class Cuenta extends Cliente {
 				"\nInfo del Cliente \n" + this.cliente.toString();
 	}
 	
-	public void depositar(float ingreso){
-		this.balance += ingreso;
-		this.registrarMovimiento("\nSe realizo un deposito de $ " + ingreso);
+	public void depositar(float deposito){
+		this.balance += deposito;
+		// 1 es la operacion de depositar
+		this.registrarMovimiento(getMensajeHistorial(1, deposito));
 	}
 	
 	public String pedirPrestado(float extraccionDeseada) {		
 		boolean respuesta = this.checkLimiteNegatico(extraccionDeseada);		
 		if(respuesta == true) {
-			this.balance -= extraccionDeseada;
-			this.registrarMovimiento("\nSe realizo un prestamo ");
+			if(extraccionDeseada > this.getBalance()) {
+				float prestamo = extraccionDeseada - this.getBalance();
+				this.registrarMovimiento(getMensajeHistorial(2, prestamo));
+			}			
+			this.setBalance(this.getBalance() - extraccionDeseada);			
+			
 			return "Prestamo aceptado, el limite de saldo negativo es $2000, su saldo actual es " + 
 					this.getBalance() + "\nDisfrute sus $ " + extraccionDeseada;
 		}
@@ -95,7 +139,8 @@ public class Cuenta extends Cliente {
 	public String extraer(float extraccion) {		
 		if(extraccion < this.balance) {
 			this.balance -= extraccion;
-			this.registrarMovimiento("\nSe realizo una extraccion de $ " + extraccion);
+			// 3 es la operacion de extraccion
+			this.registrarMovimiento(getMensajeHistorial(3, extraccion));
 			return "Extraccion exitosa disfrute de sus $ " + extraccion;
 		}
 		else {

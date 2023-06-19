@@ -1,7 +1,7 @@
 package app;
 
-import Ejercicio_1.Ejecucion1;
-import Ejercicio_2.Ejecucion2;
+import Autor_Libro.Ejecucion1;
+import Cliente_Cuenta.Ejecucion2;
 
 public class Main {
 	

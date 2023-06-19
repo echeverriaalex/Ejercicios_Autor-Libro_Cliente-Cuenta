@@ -1,4 +1,4 @@
-package Ejercicio_1;
+package Autor_Libro;
 
 public class Ejecucion1 {
 	
