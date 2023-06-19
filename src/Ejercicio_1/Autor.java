@@ -47,42 +47,44 @@ public class Autor {
 		return generoProcesado;
 	}
 	
-	public void ImprimirInfoAutor() {		
-		System.out.print("\nNombre: "+ this.getNombre());
-		System.out.print("\nApellido: "+ this.getApellido());
-		System.out.print("\nEmail: "+ this.getEmail());
-		System.out.print("\nGenero: "+ this.getGenero());
-		System.out.print("\nGenero completo: "+ this.getGeneroCompleto());
-		System.out.print("\nNombre y Apellido: "+ this.getNombreApellido());
+	public void ImprimirInfoAutor() {
+		System.out.print("\n\t*******************\n\t Info del Autor \n\t*******************\n");
+		System.out.print("\n\t Nombre: "+ this.getNombre());
+		System.out.print("\n\t Apellido: "+ this.getApellido());
+		System.out.print("\n\t Email: "+ this.getEmail());
+		System.out.print("\n\t Genero: "+ this.getGenero());
+		System.out.print("\n\t Genero completo: "+ this.getGeneroCompleto());
+		System.out.print("\n\t Nombre y Apellido: "+ this.getNombreApellido());
+		System.out.print("\n\t--------------------------------\n");
 	}
 	
 	public void ImprimirAutor() {		
-		System.out.print("\nNombre: "+ this.getNombre() + 
-						"\nApellido: "+ this.getApellido() +
-						"\nEmail: "+ this.getEmail() + 
-						"\nGenero: "+ this.getGenero() +
-						"\nGenero completo: "+ this.getGeneroCompleto() +
-						"\nNombre y Apellido: "+ this.getNombreApellido());
+		System.out.print("\n\t Nombre: "+ this.getNombre() + 
+						"\n\t Apellido: "+ this.getApellido() +
+						"\n\t Email: "+ this.getEmail() + 
+						"\n\t Genero: "+ this.getGenero() +
+						"\n\t Genero completo: "+ this.getGeneroCompleto() +
+						"\n\t Nombre y Apellido: "+ this.getNombreApellido());
 	}
 	
 	public String ImprimirInfoBuilder() {		
 		StringBuilder  builder= new StringBuilder();		
-		builder.append("\nNombre: "+ this.getNombre());
-		builder.append("\nApellido: "+ this.getApellido());
-		builder.append("\nEmail: "+ this.getEmail());
-		builder.append("\nGenero: "+ this.getGenero());
-		builder.append("\nGenero completo: "+ this.getGeneroCompleto());
-		builder.append("\nNombre y Apellido: "+ this.getNombreApellido());
+		builder.append("\n\t\t Nombre: "+ this.getNombre());
+		builder.append("\n\t\t Apellido: "+ this.getApellido());
+		builder.append("\n\t\t Email: "+ this.getEmail());
+		builder.append("\n\t\t Genero: "+ this.getGenero());
+		builder.append("\n\t\t Genero completo: "+ this.getGeneroCompleto());
+		builder.append("\n\t\t Nombre y Apellido: "+ this.getNombreApellido());
 		return builder.toString();
 	}
 	
 	@Override
 	public String toString() {
-		return 	"\nNombre: "+ this.getNombre() + 
-				"\nApellido: "+ this.getApellido()+ 
-				"\nEmail: "+ this.getEmail() + 
-				"\nGenero: "+ this.getGenero() + 
-				"\nGenero completo: "+ this.getGeneroCompleto() + 
-				"\nNombre y Apellido: "+ this.getNombreApellido(); 
+		return 	"\n	Nombre: "+ this.getNombre() + 
+				"\n	Apellido: "+ this.getApellido()+ 
+				"\n	Email: "+ this.getEmail() + 
+				"\n	Genero: "+ this.getGenero() + 
+				"\n	Genero completo: "+ this.getGeneroCompleto() + 
+				"\n Nombre y Apellido: "+ this.getNombreApellido(); 
 	}
 }

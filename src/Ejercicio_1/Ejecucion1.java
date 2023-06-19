@@ -18,7 +18,7 @@ public class Ejecucion1 {
 		
 		
 		// B
-		System.out.print("\n\nPunto B: imprimir AUTOR\n");
+		System.out.print("\nPunto B: imprimir AUTOR\n");
 		// inicializo el autor usando los datos almacenados en las variables anteriores
 		autor = new Autor(nombre, apellido, email, genero);
 		
@@ -29,14 +29,14 @@ public class Ejecucion1 {
 		autor.ImprimirInfoAutor();
 		
 		// forma de imprimir 2 
-		System.out.println("\n\n" + autor.toString());
+		System.out.println("\n" + autor.toString());
 		
 		// otra fomra de imprimir 3
-		System.out.println("\n\n" + autor.ImprimirInfoBuilder());
+		System.out.println("\n" + autor.ImprimirInfoBuilder());
 		
 		
 		// C
-		System.out.print("\n\nPunto C: inicializar LIBRO\n");
+		System.out.print("\nPunto C: inicializar LIBRO\n");
 		// hago lo mismo que en el punto A y B
 		Libro libro = new Libro();
 		String titulo= "Effective Java";
@@ -50,7 +50,7 @@ public class Ejecucion1 {
 		libro = new Libro("Effective Java", 450, 150, autor);	
 		
 		// D
-		System.out.print("\n\nPunto D: Imprima por pantalla el libro instanciado\n\n");
+		System.out.print("\nPunto D: Imprima por pantalla el libro instanciado\n\n");
 		libro.ImprimirLibro();
 		
 		// E

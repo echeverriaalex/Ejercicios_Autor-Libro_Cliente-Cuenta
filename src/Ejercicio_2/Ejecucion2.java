@@ -16,5 +16,28 @@ public class Ejecucion2 {
 		Cuenta cuenta = new Cuenta();
 		cuenta = new Cuenta(cliente.getId(), 10000, cliente);
 		cuenta.ImprimirCuenta();
+		
+		// Punto C
+		System.out.print("\nPunto C: operaciones de depósito y extracción \n");
+		
+		System.out.println("\nDeposito $300 en la cuenta");
+		cuenta.depositar(300);
+		System.out.println("La cuenta tiene un saldo de $ " + cuenta.getBalance());
+		
+		System.out.println("\nExtraigo $700 en la cuenta");
+		System.out.println(cuenta.extraer(700));
+		System.out.println("La cuenta tiene un saldo de $ " + cuenta.getBalance());
+		
+		System.out.println("\nPruebo con extraer $20000 en la cuenta, debe dar error\n");
+		System.out.println(cuenta.extraer(11600));
+		System.out.println("La cuenta tiene un saldo de $ " + cuenta.getBalance()+ "\n\n");
+		
+		System.out.println(cuenta.getHistorial());
+		
+		// Punto D
+		
+		
+		
+		// Punto E
 	}
 }
